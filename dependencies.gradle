@@ -11,7 +11,7 @@ def googleServicesPluginVersion = '4.1.0'
 def firebaseCoreVersion = '16.0.3'
 def firebaseMessagingVersion = '17.3.0'
 
-def rxJavaVersion = '2.2.2'
+def rxJavaVersion = '2.2.15'
 def rxBindingVersion = '3.0.0-alpha2'
 def rxAndroidVersion = '2.1.0'
 def rxRelayVersion = '2.1.0'
