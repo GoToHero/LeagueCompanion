@@ -1,4 +1,4 @@
-package ru.go2hero.leaguecompanion
+package ru.go2hero.leaguecompanion.base
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
 

@@ -4,6 +4,7 @@ import android.app.Application
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.androidCoreModule
+import ru.go2hero.leaguecompanion.di.appModule
 
 class App: Application(), KodeinAware {
 
@@ -13,7 +14,7 @@ class App: Application(), KodeinAware {
 
     override val kodein: Kodein = Kodein.lazy {
         import(androidCoreModule(this@App))
-        //TODO Add DI to each module
+        import(appModule)
     }
 
     override fun onCreate() {
