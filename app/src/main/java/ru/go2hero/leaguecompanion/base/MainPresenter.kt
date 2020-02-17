@@ -9,7 +9,7 @@ import ru.go2hero.leaguecompanion.di.DI_LC_REPOSITORY
 import ru.go2hero.leaguecompanion.di.DI_NAVIGATOR
 import ru.go2hero.leaguecompanion.di.DI_STORAGE_PREFERENCES
 import ru.go2hero.leaguecompanion.repository.LCRepository
-import ru.go2hero.leaguecompanion.storage.LCStorage
+import ru.go2hero.leaguecompanion.repository.storage.LCStorage
 import ru.terrakok.cicerone.android.pure.AppNavigator
 
 class MainPresenter: MvpBasePresenter<MainView>(), KodeinAware {

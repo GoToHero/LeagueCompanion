@@ -19,8 +19,8 @@ import ru.terrakok.cicerone.Router
 import ru.go2hero.leaguecompanion.navigation.AppNavigator
 import ru.go2hero.leaguecompanion.network.service.LCAPI
 import ru.go2hero.leaguecompanion.repository.LCRepository
-import ru.go2hero.leaguecompanion.storage.LCStorage
-import ru.go2hero.leaguecompanion.storage.LCStorageImpl
+import ru.go2hero.leaguecompanion.repository.storage.LCStorage
+import ru.go2hero.leaguecompanion.repository.storage.LCStorageImpl
 import java.util.concurrent.TimeUnit
 
 const val DI_LC_REPOSITORY = "LeagueCompanionRepository"

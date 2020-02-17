@@ -9,12 +9,13 @@ import org.kodein.di.direct
 import org.kodein.di.generic.instance
 import ru.go2hero.leaguecompanion.R
 import ru.go2hero.leaguecompanion.di.DI_LC_REPOSITORY
+import ru.go2hero.leaguecompanion.navigation.ActivityRouter
 import ru.go2hero.leaguecompanion.repository.LCRepository
 
 class MainActivity: MvpActivity<MainView, MainPresenter>(), KodeinAware, MainView {
 
     private val USER_TAB: Int = 2
-    //private val repository: LCRepository = kodein.direct.instance(tag = DI_LC_REPOSITORY)
+    private val repository: LCRepository = kodein.direct.instance(tag = DI_LC_REPOSITORY)
 
     override fun createPresenter(): MainPresenter {
         return kodein.direct.instance(tag = "mainPresenter")
@@ -31,7 +32,16 @@ class MainActivity: MvpActivity<MainView, MainPresenter>(), KodeinAware, MainVie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initViewElements()
+        checkExistUsers()
+    }
+
+    private fun checkExistUsers() {
+        if (repository.isUserExist()) {
+            initViewElements()
+        } else {
+            ActivityRouter.openNewUserScreen(this)
+        }
+
     }
 
     private fun initViewElements() {
@@ -40,15 +50,6 @@ class MainActivity: MvpActivity<MainView, MainPresenter>(), KodeinAware, MainVie
         //TODO Add screens
         //adapter.addFragment()
         main_container.adapter = adapter
-    }
-
-    private fun showTab(position: Int) {
-        main_container.currentItem = position
-    }
-
-
-    private fun checkExistUserProfile() {
-        //TODO If user data exist -> show user profile
 
         //TODO query user profile image for bottom bar
 
@@ -61,5 +62,9 @@ class MainActivity: MvpActivity<MainView, MainPresenter>(), KodeinAware, MainVie
             }
             return@setOnNavigationItemSelectedListener true
         }
+    }
+
+    private fun showTab(position: Int) {
+        main_container.currentItem = position
     }
 }
