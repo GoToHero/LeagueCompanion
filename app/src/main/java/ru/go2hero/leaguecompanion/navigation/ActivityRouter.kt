@@ -2,6 +2,7 @@ package ru.go2hero.leaguecompanion.navigation
 
 import android.app.Activity
 import android.content.Intent
+import ru.go2hero.leaguecompanion.ui.start.StartActivity
 
 object ActivityRouter {
 

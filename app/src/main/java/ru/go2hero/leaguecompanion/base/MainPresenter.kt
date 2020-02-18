@@ -15,7 +15,7 @@ import ru.terrakok.cicerone.android.pure.AppNavigator
 class MainPresenter: MvpBasePresenter<MainView>(), KodeinAware {
     override val kodein: Kodein by lazy { App.instance.kodein }
 
-    private val appNavigator: AppNavigator = kodein.direct.instance(tag = DI_NAVIGATOR)
+//    private val appNavigator: AppNavigator = kodein.direct.instance(tag = DI_NAVIGATOR)
     private val appStorage: LCStorage = kodein.direct.instance(tag = DI_STORAGE_PREFERENCES)
     private val repository: LCRepository = kodein.direct.instance(tag = DI_LC_REPOSITORY)
 
