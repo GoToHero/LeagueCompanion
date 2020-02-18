@@ -21,7 +21,7 @@ def okHttpVersion = '3.10.0' //Always use Retrofit's OkHttp version!
 
 def mosbyVersion = '3.1.1'
 
-def kodeinVersion = '6.1.0'
+def kodeinVersion = '6.2.1'
 
 def ciceroneVersion = '4.0.2'
 
@@ -79,14 +79,7 @@ ext {
                 exclude group: "com.android.support"
             }
     ]
-
-    /////////////////////////////////////////////////////////////////
-    // KOTLIN
-    /////////////////////////////////////////////////////////////////
-    kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-    kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    kotlinStdLibJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-
+    
     /////////////////////////////////////////////////////////////////
     // RX
     /////////////////////////////////////////////////////////////////
@@ -109,7 +102,7 @@ ext {
     /////////////////////////////////////////////////////////////////
     kodein = [
             "org.kodein.di:kodein-di-generic-jvm:$kodeinVersion",
-            "org.kodein.di:kodein-di-framework-android-support:$kodeinVersion"
+            "org.kodein.di:kodein-di-framework-android-x:$kodeinVersion"
     ]
 
     /////////////////////////////////////////////////////////////////

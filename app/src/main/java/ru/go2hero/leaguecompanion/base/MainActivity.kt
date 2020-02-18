@@ -15,7 +15,7 @@ import ru.go2hero.leaguecompanion.repository.LCRepository
 class MainActivity: MvpActivity<MainView, MainPresenter>(), KodeinAware, MainView {
 
     private val USER_TAB: Int = 2
-    private val repository: LCRepository = kodein.direct.instance(tag = DI_LC_REPOSITORY)
+    private val repository: LCRepository by instance(tag = DI_LC_REPOSITORY)
 
     override fun createPresenter(): MainPresenter {
         return kodein.direct.instance(tag = "mainPresenter")
@@ -37,6 +37,7 @@ class MainActivity: MvpActivity<MainView, MainPresenter>(), KodeinAware, MainVie
 
     private fun checkExistUsers() {
         if (repository.isUserExist()) {
+            setContentView(R.layout.activity_main)
             initViewElements()
         } else {
             ActivityRouter.openNewUserScreen(this)

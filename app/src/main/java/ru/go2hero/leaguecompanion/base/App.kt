@@ -12,7 +12,7 @@ class App: Application(), KodeinAware {
         lateinit var instance: App
     }
 
-    override val kodein: Kodein = Kodein.lazy {
+    override val kodein = Kodein {
         import(androidCoreModule(this@App))
         import(appModule)
     }

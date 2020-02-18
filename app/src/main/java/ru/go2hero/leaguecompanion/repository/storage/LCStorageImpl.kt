@@ -29,11 +29,11 @@ class LCStorageImpl(val context: Context): LCStorage {
         return SummonerProfile(profileIconId, name, puuid, summonerLevel, revisionDate, id, accountId)
     }
 
-    private fun getSummonerAccountId(preferences: SharedPreferences): String {
+    private fun getSummonerAccountId(preferences: SharedPreferences): String? {
         return preferences.getString(FIELD_SUMMONER_ACCOUNT_ID, "")
     }
 
-    private fun getSummonerId(preferences: SharedPreferences): String {
+    private fun getSummonerId(preferences: SharedPreferences): String? {
         return preferences.getString(FIELD_SUMMONER_ID, "")
     }
 
@@ -45,11 +45,11 @@ class LCStorageImpl(val context: Context): LCStorage {
         return preferences.getLong(FIELD_SUMMONER_LEVEL, -1)
     }
 
-    private fun getSummonerPUUID(preferences: SharedPreferences): String {
+    private fun getSummonerPUUID(preferences: SharedPreferences): String? {
         return preferences.getString(FIELD_SUMMONER_PUUID, "")
     }
 
-    private fun getSummonerName(preferences: SharedPreferences): String {
+    private fun getSummonerName(preferences: SharedPreferences): String? {
         return preferences.getString(FIELD_SUMMONER_NAME, "")
     }
 
@@ -58,10 +58,26 @@ class LCStorageImpl(val context: Context): LCStorage {
     }
 
     override fun isUserExist(): Boolean {
-        return getUserSummonerProfile().name != ""
+        val user = getUserSummonerProfile()
+        if (user.name.isNullOrBlank()) return false
+        return true
     }
 
     private fun getProfileSharedPreferences(): SharedPreferences {
         return context.getSharedPreferences(PROFILE_PREFERENCES_NAME, Context.MODE_PRIVATE)
     }
+
+    private fun saveSummonerProfile(summonerProfile: SummonerProfile) {
+        val preferences = getProfileSharedPreferences()
+        val editor = preferences.edit()
+        editor.putInt(FIELD_SUMMONER_PROFILE_ICON_ID, summonerProfile.profileIconId ?: -1)
+        editor.putString(FIELD_SUMMONER_NAME, summonerProfile.name)
+        editor.putString(FIELD_SUMMONER_PUUID, summonerProfile.puuid)
+        editor.putLong(FIELD_SUMMONER_LEVEL, summonerProfile.summonerLevel ?: -1)
+        editor.putLong(FIELD_SUMMONER_REVISION_DATE, summonerProfile.revisionDate ?: -1)
+        editor.putString(FIELD_SUMMONER_ID, summonerProfile.id)
+        editor.putString(FIELD_SUMMONER_ACCOUNT_ID, summonerProfile.accountId)
+        editor.apply()
+    }
+
 }
